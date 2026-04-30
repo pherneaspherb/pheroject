@@ -5,8 +5,8 @@ class OverlayBubble extends StatelessWidget {
   const OverlayBubble({super.key});
 
   Future<void> handleTap() async {
-    debugPrint("VERIGUARD BUBBLE TAPPED");
-
+    debugPrint("BUBBLE TAPPED - SENDING SCAN");
+    await FlutterOverlayWindow.shareData("scan");
     await FlutterOverlayWindow.closeOverlay();
   }
 
@@ -22,12 +22,6 @@ class OverlayBubble extends StatelessWidget {
           decoration: const BoxDecoration(
             color: Colors.orange,
             shape: BoxShape.circle,
-            boxShadow: [
-              BoxShadow(
-                blurRadius: 12,
-                color: Colors.black26,
-              ),
-            ],
           ),
           child: const Icon(
             Icons.shield_rounded,

@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_overlay_window/flutter_overlay_window.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   Future<void> startProtection(BuildContext context) async {
     debugPrint("START BUTTON TAPPED");
 
@@ -43,6 +48,25 @@ class HomeScreen extends StatelessWidget {
 
   Future<void> stopProtection() async {
     await FlutterOverlayWindow.closeOverlay();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    FlutterOverlayWindow.overlayListener.listen((event) {
+      if (event == "scan") {
+        debugPrint("SCAN TRIGGERED FROM OVERLAY");
+
+        showDialog(
+          context: context,
+          builder: (_) => const AlertDialog(
+            title: Text("VeriGuard"),
+            content: Text("Scanning content..."),
+          ),
+        );
+      }
+    });
   }
 
   @override
