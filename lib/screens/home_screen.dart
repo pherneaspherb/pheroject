@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_overlay_window/flutter_overlay_window.dart';
+import 'package:pheroject/screens/result_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -107,6 +108,18 @@ class _HomeScreenState extends State<HomeScreen> {
               onPressed: stopProtection,
               icon: const Icon(Icons.close_rounded),
               label: const Text('Stop Protection'),
+            ),
+            const SizedBox(height: 20),
+
+            FilledButton.icon(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => const ResultScreen()),
+                );
+              },
+              icon: const Icon(Icons.search),
+              label: const Text("Scan Now"),
             ),
           ],
         ),
