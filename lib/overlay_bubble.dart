@@ -5,8 +5,7 @@ class OverlayBubble extends StatelessWidget {
   const OverlayBubble({super.key});
 
   Future<void> handleTap() async {
-    debugPrint("BUBBLE TAPPED - SENDING SCAN");
-    await FlutterOverlayWindow.shareData("scan");
+    debugPrint("BUBBLE TAPPED");
     await FlutterOverlayWindow.closeOverlay();
   }
 
